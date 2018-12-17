@@ -1,11 +1,11 @@
 const { Song } = require("../models");
 
 module.exports = {
-  // This function will try to find the song and limit the search to 10
+  // This function will try to find the song and limit the search to 20
   async index(req, res) {
     try {
       const songs = await Song.findAll({
-        limit: 10
+        limit: 20
       });
       res.send(songs);
     } catch (err) {
@@ -24,7 +24,7 @@ module.exports = {
     } catch (err) {
       // Can't get the song id
       res.status(500).send({
-        error: "An error has occured trying to fetch the songs"
+        error: "An error has occured trying to show the songs"
       });
     }
   },
@@ -34,9 +34,25 @@ module.exports = {
       const song = await Song.create(req.body);
       res.send(song);
     } catch (err) {
-      // email already exists
+      // song already exists
       res.status(500).send({
         error: "An error has occured trying to create the song."
+      });
+    }
+  },
+  // To edit song
+  async put(req, res) {
+    try {
+      const song = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      });
+      res.send(this.body);
+    } catch (err) {
+      // Error trying to update song
+      res.status(500).send({
+        error: "An error has occured trying to update the song."
       });
     }
   }

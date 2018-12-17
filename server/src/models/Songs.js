@@ -5,9 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     genre: DataTypes.STRING,
     album: DataTypes.STRING,
     albumImageUrl: DataTypes.STRING,
-    youtubeID: DataTypes.STRING,
+    youtubeId: DataTypes.STRING,
     lyrics: DataTypes.TEXT,
     tab: DataTypes.TEXT
   });
+
+  Song.associate = function(models) {};
+
   return Song;
 };

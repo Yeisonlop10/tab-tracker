@@ -6,7 +6,7 @@
       </v-flex>
       <v-flex xs6 class="ml-2">
         <you-tube :youtubeId="song.youtubeId"/>
-      </v-flex> 
+      </v-flex>
     </v-layout>
 
     <v-layout class="mt-2">
@@ -25,7 +25,7 @@
 import Lyrics from "./Lyrics";
 import Tab from "./Tab";
 import SongMetadata from "./SongMetadata";
-import YouTube from './YouTube'
+import YouTube from "./YouTube";
 import SongsService from "@/services/SongsService";
 import Panel from "@/components/Panel";
 
@@ -39,7 +39,7 @@ export default {
   async mounted() {
     const songId = this.$store.state.route.params.songId;
     this.song = (await SongsService.show(songId)).data;
-    console.log(song);
+    //console.log(song);
   },
   components: {
     Panel,
