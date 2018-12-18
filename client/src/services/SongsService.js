@@ -5,8 +5,13 @@ import Api from "@/services/Api";
 // Export an object that has a register method to it
 
 export default {
-  index() {
-    return Api().get("songs");
+  // Method to search
+  index(search) {
+    return Api().get("songs", {
+      params: {
+        search: search
+      }
+    });
   },
   // To get the song id from the backend
   show(songId) {

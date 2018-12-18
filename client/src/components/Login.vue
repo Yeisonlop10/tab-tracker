@@ -6,7 +6,7 @@
         <br>
         <v-text-field label="Password" type="password" v-model="password"></v-text-field>
         <br>
-        <div class="error" v-html="error"/>
+        <div class="danger-alert" v-html="error"/>
         <br>
         <v-btn dark class="cyan" @click="login">Login</v-btn>
       </panel>
@@ -16,7 +16,7 @@
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
-import Panel from "@/components/Panel";
+
 export default {
   data() {
     return {
@@ -36,21 +36,19 @@ export default {
         // This line will call setToken inside store
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+         // To redirect user to songs page
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error;
       }
       // console.log(response.data);
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-  color: red;
-}
 </style>

@@ -8,6 +8,7 @@ import { sync } from "vuex-router-sync";
 import "vuetify/dist/vuetify.min.css";
 import store from "@/store/store";
 import VueYouTubeEmbed from "vue-youtube-embed";
+import Panel from '@/components/globals/Panel'
 
 Vue.config.productionTip = false;
 
@@ -15,6 +16,9 @@ Vue.config.productionTip = false;
 Vue.use(Vuetify);
 // To enable toutube embed
 Vue.use(VueYouTubeEmbed);
+
+// To use panel globally
+Vue.component('panel', Panel)
 
 sync(store, router);
 

@@ -5,13 +5,17 @@
         <div class="song-title">{{song.title}}</div>
         <div class="song-artist">{{song.artist}}</div>
         <div class="song-genre">{{song.genre}}</div>
-        <v-btn dark class="cyan" 
-        @click="navigateTo({name: 'song-edit',
-        params: {
-          songId: song.id
-          }
-          })">Edit
-          </v-btn>
+        <v-btn
+          dark
+          class="cyan"
+          :to="{name: 'song-edit',
+            params () {
+              return {
+                songId: song.id
+                    } 
+              }
+            }"
+        >Edit</v-btn>
       </v-flex>
       <v-flex xs6>
         <img class="album-image" :src="song.albumImageUrl">
@@ -23,17 +27,8 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 export default {
-  props: ["song"],
-  methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
-  },
-  components: {
-      Panel
-  }
+  props: ["song"]
 };
 </script>
 <style scoped>

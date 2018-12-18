@@ -5,12 +5,11 @@
 </template>
 
 <script>
-import Panel from "@/components/Panel";
+
 import YouTube from "./YouTube";
 export default {
   props: ["youtubeId"],
   components: {
-    Panel,
     YouTube
   }
 };
